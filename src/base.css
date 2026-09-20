@@ -1,0 +1,123 @@
+/* Base — landing/brand element styles. Constant across style packs.
+ *
+ * The type scale is defined in tailwind.config.ts (fontSize).
+ * This file provides .landing scoped heading styles that use
+ * the scale via CSS variables for responsive sizing, plus the
+ * reusable .brand-* CTA fill/text mechanics (pack-agnostic — the
+ * gradient VALUE they paint, --cta-grad, lives in style-pack.css).
+ *
+ * Style-pack.css controls font family and weight.
+ * This file only controls size, line-height, and tracking.
+ */
+
+/* ── Landing page typography ─────────────────────────────────────
+ * Scoped to .landing so these element styles only apply on marketing
+ * pages. App pages use Tailwind utility classes + shadcn components.
+ */
+
+.landing h1,
+.landing h2,
+.landing h3,
+.landing h4 {
+  font-family: var(--font-heading);
+}
+
+.landing h1 {
+  font-size: 40px;
+  line-height: 48px;
+  letter-spacing: -2.4px;
+  text-wrap: balance;
+}
+
+.landing h2 {
+  font-size: 32px;
+  line-height: 40px;
+  letter-spacing: -1.28px;
+}
+
+.landing h3 {
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: -0.96px;
+}
+
+.landing h4 {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+/* Fluid hero — modifier class for the primary landing headline */
+.landing h1.display {
+  font-size: clamp(2.75rem, -2rem + 8vw, 5.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+
+/* Mobile — one step down */
+@media (max-width: 950px) {
+  .landing h1 {
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: -1.28px;
+  }
+  .landing h2 {
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: -0.96px;
+  }
+  .landing h3 {
+    font-size: 20px;
+    line-height: 28px;
+  }
+  .landing h4 {
+    font-size: 18px;
+    line-height: 28px;
+  }
+}
+
+/* ── Brand CTA fill/text mechanics ───────────────────────────────
+ * Reusable classes for painting the pack's CTA gradient onto a fill
+ * or clipping it to text. Used on landing, auth, and demo surfaces.
+ * The gradient VALUE (--cta-grad / --brand-grad-*) is a pack token,
+ * defined in style-pack.css — these mechanics are constant per pack.
+ */
+
+.brand-lite {
+  --brand-grad: var(--brand-grad-lite);
+}
+.brand-standard {
+  --brand-grad: var(--brand-grad-standard);
+}
+.brand-plus {
+  --brand-grad: var(--brand-grad-plus);
+}
+
+/* Fills + text share the one gradient; text clips it to the glyph shapes. */
+.brand-fill,
+.brand-text {
+  background-image: var(--brand-grad, var(--cta-grad));
+}
+.brand-text {
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* White pill with gradient-filled label — for CTAs sitting ON the gradient.
+ * `background-clip: text` clips the element's own background away, so the
+ * white fill lives on the button and the gradient is clipped to the text of
+ * an inner span. */
+.brand-pill {
+  background-color: #fff;
+}
+.brand-pill > span {
+  background-image: var(--brand-grad, var(--cta-grad));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+
+

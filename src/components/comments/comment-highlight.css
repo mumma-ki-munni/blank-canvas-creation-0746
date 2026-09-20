@@ -1,0 +1,23 @@
+/* queJue*/
+
+.comment-highlight-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.comment-highlight-rect {
+  position: absolute;
+  transition: background-color 90ms;
+  background: rgba(98, 161, 250, 0.4);
+  mix-blend-mode: multiply;
+}
+
+.dark .comment-highlight-rect {
+  background: rgba(5, 88, 249, 0.7);
+  mix-blend-mode: screen;
+}
+
+.comment-highlight-rect[data-active="true"] {
+  background: rgba(98, 161, 250, 0.6);
+}

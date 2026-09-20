@@ -1,0 +1,12 @@
+/* Hero headline responsive size — adapted from the live the reference site:
+   12vw on phone/tablet, 10vw from the 834px tablet breakpoint up.
+   (Verified: 46.8px@390, 98.4px@820 = 12vw; 149.7px@1497, 191.4px@1914 = 10vw.) */
+.lp-hero-h1 {
+  font-size: clamp(40px, 12vw, 120px);
+}
+
+@media (min-width: 834px) {
+  .lp-hero-h1 {
+    font-size: min(10vw, 220px);
+  }
+}

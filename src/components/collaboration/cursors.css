@@ -1,0 +1,29 @@
+/* Cursor caret + name label for collaborative editing */
+
+.collaboration-cursor__caret {
+  border-left: 1px solid var(--cursor-color);
+  border-right: 1px solid var(--cursor-color);
+  background-color: var(--cursor-color);
+  margin-left: -1px;
+  margin-right: -1px;
+  pointer-events: none;
+  position: relative;
+  word-break: normal;
+  z-index: 100;
+}
+
+.collaboration-cursor__label {
+  background-color: var(--cursor-color);
+  border-radius: 3px 3px 3px 0;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  left: -1px;
+  line-height: normal;
+  padding: 0.1rem 0.3rem;
+  position: absolute;
+  top: -1.4em;
+  user-select: none;
+  white-space: nowrap;
+  color: white;
+}

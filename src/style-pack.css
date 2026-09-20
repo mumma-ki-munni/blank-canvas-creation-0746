@@ -1,0 +1,156 @@
+/* StylePack — the editor pack (the editor starter's default).
+ *
+ * The ONE theme file. Overrides index.css's neutral OKLCH baseline with the
+ * pack's tokens: radius, fonts, weights, and the full color set (incl.
+ * --color-primary = the CTA color). Imported by `src/main.tsx` AFTER index.css
+ * so these values win. Lovable's TDP customization + any fork's re-skin flow
+ * both write here.
+ *
+ * To swap the pack: replace the values here + update the font links in
+ * index.html. The reusable .brand-* fill/text mechanics live in base.css.
+ */
+
+:root {
+  /* Brand palette — the options to pick from. */
+  --brand-blue: #0388ff;
+  --brand-cyan: #0ec0e8;
+  --brand-green: #3ac85c;
+  --brand-indigo: #6256f4;
+  --brand-purple: #ca31e0;
+  --brand-red: #ff3157;
+  --brand-orange: #ff8c29;
+
+  /* ★ Pick one — this is the knob. It becomes the app's solid color AND the
+   * base of the landing sheen gradient (both derive from --color-primary,
+   * which points at --brand). */
+  --brand: var(--brand-orange);
+
+  --radius: 0.75rem; /* 12px — house standard for cards/popovers/controls */
+
+  /* Font families — Google Sans Flex, Inter fallbacks. */
+  --font-heading: "Google Sans Flex", "Inter Display", "Inter", sans-serif;
+  --font-body: "Google Sans Flex", "Inter", sans-serif;
+  /* Editor module: display headings follow the pack's heading font; mono is constant */
+  --font-display: var(--font-heading);
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+  /* Font weight defaults — overridable via TDP postMessage */
+  --font-heading-weight: 600;
+  --font-body-weight: 400;
+
+  /* Color tokens (light). */
+  --color-background: rgba(255, 255, 255, 1);
+  --color-foreground: rgba(30, 29, 40, 1); /* #1E1D28 */
+  --color-card: rgba(255, 255, 255, 1);
+  --color-card-foreground: rgba(0, 0, 0, 1);
+  --color-popover: rgba(255, 255, 255, 1);
+  --color-popover-foreground: rgba(0, 0, 0, 1);
+  --color-primary: var(--brand); /* solid in the app + base of the landing gradient */
+  --color-primary-foreground: #ffffff;
+  --color-secondary: rgba(0, 0, 0, 0.05);
+  --color-secondary-foreground: rgba(0, 0, 0, 1);
+  --color-muted: #fafafc; /* page-canvas surround (cards stay white) */
+  --color-muted-foreground: rgba(84, 84, 101, 1); /* #545465 */
+  --color-accent: rgba(0, 0, 0, 0.05);
+  --color-accent-foreground: rgba(0, 0, 0, 1);
+  --color-destructive: rgba(216, 32, 32, 1); /* redBright */
+  --color-destructive-foreground: rgba(255, 255, 255, 1);
+  --color-border: rgba(230, 233, 235, 1); /* #E6E9EB */
+  --color-input: rgba(230, 233, 235, 1); /* #E6E9EB */
+  --color-ring: var(--color-primary); /* focus ring tracks the brand */
+  --color-orange-pastel: rgba(251, 230, 191, 1); /* resolved-comment highlight */
+  --color-sidebar: rgba(252, 252, 252, 1);
+  --color-sidebar-foreground: rgba(0, 0, 0, 0.55);
+  --color-sidebar-primary: rgba(26, 26, 26, 1);
+  --color-sidebar-primary-foreground: rgba(255, 255, 255, 1);
+  --color-sidebar-accent: rgba(0, 0, 0, 0.05);
+  --color-sidebar-accent-foreground: rgba(0, 0, 0, 1);
+  --color-sidebar-border: rgba(0, 0, 0, 0.05);
+  --color-sidebar-ring: var(--color-primary);
+}
+
+.dark {
+  /* Color tokens (dark). */
+  --color-background: rgba(17, 17, 17, 1);
+  --color-foreground: rgba(255, 255, 255, 1);
+  --color-card: rgba(24, 24, 24, 1);
+  --color-card-foreground: rgba(255, 255, 255, 1);
+  --color-popover: rgba(24, 24, 24, 1);
+  --color-popover-foreground: rgba(255, 255, 255, 1);
+  --color-primary: var(--brand);
+  --color-primary-foreground: #ffffff;
+  --color-secondary: rgba(255, 255, 255, 0.06);
+  --color-secondary-foreground: rgba(255, 255, 255, 1);
+  --color-muted: #1a1a1a; /* canvas surround (subtle lift above bg for hover visibility) */
+  --color-muted-foreground: rgba(255, 255, 255, 0.55);
+  --color-accent: rgba(255, 255, 255, 0.06);
+  --color-accent-foreground: rgba(255, 255, 255, 1);
+  --color-destructive: rgba(255, 90, 80, 1); /* redVivid */
+  --color-destructive-foreground: rgba(255, 255, 255, 1);
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-input: rgba(255, 255, 255, 0.12);
+  --color-ring: var(--color-primary);
+  --color-sidebar: rgba(24, 24, 24, 1);
+  --color-sidebar-foreground: rgba(255, 255, 255, 0.55);
+  --color-sidebar-primary: rgba(250, 250, 250, 1);
+  --color-sidebar-primary-foreground: rgba(17, 17, 17, 1);
+  --color-sidebar-accent: rgba(255, 255, 255, 0.06);
+  --color-sidebar-accent-foreground: rgba(255, 255, 255, 1);
+  --color-sidebar-border: rgba(255, 255, 255, 0.08);
+  --color-sidebar-ring: var(--color-primary);
+}
+
+/* ── Body font (StylePack-aware) ─────────────────────────────── */
+
+body {
+  font-feature-settings: "ss01", "cv11";
+  text-rendering: optimizeLegibility;
+  text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  font-weight: var(--font-body-weight);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: var(--font-heading-weight);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ═══ Brand gradient — the brand color with a white sheen ══════════════════
+ * The brand is ONE knob: --color-primary (above). It drives BOTH surfaces:
+ *   • the app     → SOLID bg-primary (buttons, selections, accents)
+ *   • the landing → GRADIENT --cta-grad: the brand color with a white
+ *     top→bottom sheen (white 0% → 36%), used by the .brand-* fill/text
+ *     classes (mechanics in base.css) + the hero background.
+ * Change --color-primary alone to re-brand everything.
+ * ─────────────────────────────────────────────────────────────────────────*/
+:root {
+  /* white sheen layered over the solid brand color (expressed as a gradient
+     layer so the whole thing is one background-image value) */
+  --cta-grad: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.36) 100%
+    ),
+    linear-gradient(var(--color-primary), var(--color-primary));
+  /* brand-lite/standard/plus all resolve to the one brand gradient */
+  --brand-grad-lite: var(--cta-grad);
+  --brand-grad-standard: var(--cta-grad);
+  --brand-grad-plus: var(--cta-grad);
+}
+
+/* NOTE: app primary buttons are intentionally SOLID (bg-primary) — the gradient
+ * is reserved for the landing (.brand-* classes + hero). "Gradient on landing,
+ * solid color in the app." */
